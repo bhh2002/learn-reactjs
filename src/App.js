@@ -1,6 +1,6 @@
+// import "./App.css";
 import React from "react";
-import "./App.css";
-import AlbumFeature from "./features/Album";
+import TodoFeature from "./features/Todo";
 
 // function App() {
 //   const name = "Hoang";
@@ -63,13 +63,12 @@ import AlbumFeature from "./features/Album";
 
 function App() {
   // Lab Todo
- 
+
   return (
     <div className="App">
-      <AlbumFeature />
+      <TodoFeature />
     </div>
   );
 }
-
 
 export default App;
