@@ -1,9 +1,9 @@
 // import "./App.css";
-import React from "react";
-import { Link, NavLink, Route, Switch } from "react-router-dom";
+import React from 'react';
+import { NavLink, Route, Switch } from 'react-router-dom';
 
-import AlbumFeature from "./features/Album";
-import TodoFeature from "./features/Todo";
+import AlbumFeature from './features/Album';
+import TodoFeature from './features/Todo';
 
 // function App() {
 //   const name = "Hoang";
