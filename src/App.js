@@ -1,5 +1,8 @@
 // import "./App.css";
 import React from "react";
+import { Link, NavLink, Route, Switch } from "react-router-dom";
+
+import AlbumFeature from "./features/Album";
 import TodoFeature from "./features/Todo";
 
 // function App() {
@@ -66,7 +69,28 @@ function App() {
 
   return (
     <div className="App">
-      <TodoFeature />
+      Header
+      {/* <button>
+        <Link to="/todos">Todos</Link>
+      </button>
+      <button>
+        <Link to="/albums">Albums</Link>
+      </button>
+      <br /> */}
+      <button>
+        <NavLink to="/todos" activeClassName="active-menu">
+          Todos
+        </NavLink>
+      </button>
+      <button>
+        <NavLink to="/albums">Albums</NavLink>
+      </button>
+      <Switch>
+        <Route path="/" component={TodoFeature} />
+        <Route path="/todos" component={TodoFeature} />
+        <Route path="/albums" component={AlbumFeature} />
+      </Switch>
+      Footer
     </div>
   );
 }
