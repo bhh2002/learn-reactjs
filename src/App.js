@@ -1,9 +1,11 @@
 // import "./App.css";
 import React from 'react';
 import { NavLink, Route, Switch } from 'react-router-dom';
+import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
 
 import AlbumFeature from './features/Album';
 import TodoFeature from './features/Todo';
+import NotFound from './features/Todo/components/NotFound';
 
 // function App() {
 //   const name = "Hoang";
@@ -86,9 +88,14 @@ function App() {
         <NavLink to="/albums">Albums</NavLink>
       </button>
       <Switch>
-        <Route path="/" component={TodoFeature} />
+      <Redirect from="/home" to="/" exact />
+      <Redirect from="/post-list/:postId" to="/posts/:postId" exact />
+
+        <Route path="/" component={TodoFeature} exact />
         <Route path="/todos" component={TodoFeature} />
         <Route path="/albums" component={AlbumFeature} />
+
+        <Route component={NotFound} />
       </Switch>
       Footer
     </div>
