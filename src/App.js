@@ -1,11 +1,12 @@
 // import "./App.css";
-import React from 'react';
-import { NavLink, Route, Switch } from 'react-router-dom';
-import { Redirect } from 'react-router-dom/cjs/react-router-dom.min';
+import React, { useEffect } from "react";
+import { NavLink, Route, Switch } from "react-router-dom";
+import { Redirect } from "react-router-dom/cjs/react-router-dom.min";
+import productApi from "./api/productApi";
 
-import AlbumFeature from './features/Album';
-import TodoFeature from './features/Todo';
-import NotFound from './features/Todo/components/NotFound';
+import AlbumFeature from "./features/Album";
+import TodoFeature from "./features/Todo";
+import NotFound from "./features/Todo/components/NotFound";
 
 // function App() {
 //   const name = "Hoang";
@@ -67,6 +68,18 @@ import NotFound from './features/Todo/components/NotFound';
 // }
 
 function App() {
+  useEffect(() => {
+    const fetchProducts = async () => {
+      const params = {
+        _limit: 10,
+      }
+      const productList = await productApi.getAll(params);
+      console.log(productList);
+    };
+
+    fetchProducts();
+  }, []);
+
   // Lab Todo
 
   return (
@@ -88,8 +101,8 @@ function App() {
         <NavLink to="/albums">Albums</NavLink>
       </button>
       <Switch>
-      <Redirect from="/home" to="/" exact />
-      <Redirect from="/post-list/:postId" to="/posts/:postId" exact />
+        <Redirect from="/home" to="/" exact />
+        <Redirect from="/post-list/:postId" to="/posts/:postId" exact />
 
         <Route path="/" component={TodoFeature} exact />
         <Route path="/todos" component={TodoFeature} />
